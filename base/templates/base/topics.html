@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="form">
+  <div class="rom" style="flex-direction:column;">
+      <h4>Rooms</h4><br><br>
+      {% for topic in topics %}
+      <div class="topicits">
+        <a style="text-decoration: none; color: white;" href="{% url 'home'%}?q={{topic.name}}">
+          <h5>{{topic.name}}<h5>
+        </a>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+{% endblock content %}

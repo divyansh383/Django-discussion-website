@@ -1,0 +1,18 @@
+<style>
+    
+</style>
+<div>
+    <div class="activity" style="display:block; overflow-y:scroll;">
+        {% for msg in room_messages %}
+            <br>
+            <div class="msgs">
+                <small><a class="text-info" href="{% url 'user-profile' msg.user.id %}">@{{msg.user}}</a>  {{msg.created|timesince}} ago</small>
+                <small>replied to "{{msg.room}}"</small>
+                <p style="background-color: rgb(67, 84, 107); border-radius: 10px; padding: 10px;padding: 10px;">{{msg.body}}</p>
+                {% if request.user == msg.user %}
+                    <a class="text-info" href="{% url 'delete-msg' msg.id %}">Delete</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,46 @@
+{% extends 'main.html'%}
+{% block content%}
+
+<style>
+    .profil-container{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    }
+    .propic{
+        width: 10rem;
+        height: 10rem;
+        border-radius: 100%;
+    }
+    @media screen and (max-width: 800px) {
+        .profil-container{
+            display: block;
+        }
+        .activity{
+            display: block;
+        }
+    }
+
+</style>
+<div class="profil-container">
+    
+    <div style="padding:10px ;">
+        {% load static %}
+        {% if request.user == user %}
+            <p class="text-info"><a class="link-info" href="{% url 'update-user' %}">Edit-User</a></p>
+        {% endif %}
+        <div class="userpro">
+                <div class="rom" style="flex-direction: column; padding: 10px; margin: 10px; background-color: rgb(85, 104, 128);"><img src="{{profp.pp.url}}" class="propic">
+                <h1>{{user.first_name}} {{user.last_name}} </h1></div>
+                <h4>About</h4>
+                <div class="rom" style="flex-direction: column; padding: 10px; margin: 10px;">{{profp.bio}}</div>
+            <h4>Rooms hosted by {{user}}</h4>
+            {% include 'base/feed_component.html' %}
+        </div>
+    </div>
+    <div class="activity" style="overflow-y:hidden;">
+        <div style="background-color:rgb(21, 148, 148); border-top-left-radius:10px ;border-top-right-radius:10px; padding: 5px;"><h4>Recent Activity<h4></div>
+        {% include 'base/activity_component.html' %}
+    </div>
+</div>
+
+{% endblock content%}

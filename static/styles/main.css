@@ -1,0 +1,135 @@
+body {
+    background-color: rgb(85, 104, 128);
+    overflow-y: scroll;
+}
+
+.home-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1.5fr;
+}
+
+.browsetopics {
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.browsetopics a {
+    color: white;
+    font-weight: bold;
+}
+
+.browsetopics a:hover {
+    color: rgb(0, 25, 48);
+}
+
+a {
+    text-decoration: none;
+}
+.feed a:hover{
+    text-shadow: rgb(2, 222, 252) 1px 0 10px;
+}
+
+.feed{
+    border-radius: 10px;
+    background-color: rgb(52, 59, 68);
+    margin: 10px;
+    padding: 10px;
+    color:white;
+  }
+.activity {
+    border-radius: 10px;
+    background-color: rgb(31, 43, 75);
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    height: 80vh;
+    overflow-y:scroll;
+}
+
+.msgs{
+    border: solid 1px;
+    border-color:rgb(67, 84, 107); 
+    border-radius: 10px; 
+    padding: 10px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+.roominfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: flex-end;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius:10px ;
+}
+
+.rom{
+    background-color:rgb(31, 43, 75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius:10px ;
+    margin: 5%;
+    padding: 5%;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 800px) {
+    .home-container {
+        display:flex ;
+        flex-direction: column;
+    }
+    .home-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .roomno{
+        font-size: smaller;
+    }
+    .activity{
+        display:none;
+    }
+    .topicits{
+        display:none;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .home-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1.5fr;
+    }
+    .home-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .roomno{
+        display:none;
+    }
+    .activity{
+        display:none;
+    }
+    .nvb{
+        display:none;
+    }
+    .topicits{
+        display:none;
+    }
+
+  }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+{% block content %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Room</title>
+  </head>
+  <body>
+    <style>
+      .room-container{
+        display: grid;
+        grid-template-columns: 3fr 1fr;     
+      }
+      @media screen and (max-width: 600px) {
+        .room-container{
+          display: grid;
+          grid-template-columns: 1fr;
+      }
+      }
+    </style>
+
+    <div class="room-container">
+      <div>
+        <h3>{{room.name}}</h3>
+        <p>{{room.description}}</p>
+        <hr>
+        <div class="comment-wrapper">
+            <h4>Conversations</h4>
+            
+            {% for message in room_messages %}
+            <div class="feed">
+              <small>@{{message.user}} - {{message.created|timesince}} ago</small>
+              <p>{{message.body}}</p>
+              {% if request.user == message.user %}
+                <button  class="btn btn-light"><a href="{%url 'update-msg' message.id%}">Edit</a></button>
+                <button class="btn btn-light"><a href="{% url 'delete-msg' message.id %}">Delete</a></button>
+              {% endif %}
+              <hr>
+            </div>
+            {% endfor %}
+            {% if request.user.is_authenticated %}
+            <div class="comment-form">
+              <form method="POST" action="" class="feed">
+                {% csrf_token %}
+                <input type="text" name="body" placeholder="write your message here" class="form-control">
+              </form>
+            </div>
+            {% endif %}
+        </div>
+
+        
+      </div>
+      
+      <div>
+        <h3>Participants</h3>
+        {% for user in participants %}
+            <div>
+              @<a class="link-info" href="{% url 'user-profile' user.id %}">{{user.username}}</a>
+            </div>
+            {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock content %}

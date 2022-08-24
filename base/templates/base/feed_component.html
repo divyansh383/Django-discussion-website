@@ -1,0 +1,19 @@
+<style>
+    .feed a:hover{
+      text-shadow: rgb(2, 222, 252) 1px 0 10px;
+    }
+</style>
+
+{% for room in rooms %}
+    <div class="feed">
+        <a class="text-info" href="{% url 'user-profile' room.host.id %}">@{{room.host.username}}</span>
+        
+        <h4><a class="text-light" href="{% url 'room' room.id %}">{{room.name}}</a></h4>   <!--accessing via url name-->
+        <small>{{room.topic.name}}</small>
+        <hr>
+        {% if request.user == room.host %}
+        <button  class="btn btn-light"><a href="{%url 'update-room' room.id%}">Edit</a></button>
+        <button  class="btn btn-light"><a href="{%url 'delete-room' room.id%}">Delete</a></button>
+        {% endif %}
+    </div>
+{% endfor %}

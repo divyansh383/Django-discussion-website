@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="rom">
+    <form method="POST" action="" >
+        {%csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-primary"><a style="color: white;" href="{{request.META.HTTP_REFERER}}">Cancel</a></button>
+        <input class="btn btn-primary"type="submit" value="submit">
+    </form>
+</div>
+{% endblock content%}

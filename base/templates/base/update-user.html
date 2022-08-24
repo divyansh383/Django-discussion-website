@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="form" style="flex-direction:column ;">
+  <br>
+  <h3>Edit your profile</h3>
+  <div class="rom">
+      <form method="POST" action="" enctype="multipart/form-data">
+      {% csrf_token %}
+          {% for field in form %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">{{field.label}}   </label><br>
+                {{field}}
+            </div>
+          {% endfor %}
+          <div class="mb-3">
+            <div class="mb-3">
+              {{prof_form.as_p}}
+            </div>
+          </div>
+          
+          <div class="mb-3" style="display:flex ; justify-content: space-around;">
+            <button type="submit"  class="btn btn-primary"><a class="text-light" href="{% url 'home' %}">Cancel</a></button>
+            <button class="btn btn-primary" type="submit">Update</button>
+          </div>
+      </form>
+      
+  </div>
+</div>
+      
+{% endblock content %}

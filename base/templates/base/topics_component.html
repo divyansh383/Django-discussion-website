@@ -1,0 +1,49 @@
+<style>
+  .dd{
+    display:none;
+  }
+  #box{
+    height: 30vh;
+    overflow: hidden;
+  }
+  @media screen and (max-width: 800px) {
+    .topicits{
+        display:none;
+    }
+    .dd{
+    display:flex;
+  }
+  }
+</style>
+<div>
+    <h3 class="topicits">Browse Topics- {{q}}</h3>
+    <div class="dropdown" style="display:flex ;">
+        <a class="dd btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><small>Topics- {{q}}   </small></a>
+      
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a style="text-decoration: none; color: black;"  href="{% url 'home'%}">All</a><br></li><br>
+            {% for topic in topics %}
+            <div>
+                <li><a style="text-decoration: none; color: black;" href="{% url 'home'%}?q={{topic.name}}"><p>{{topic.name}}<p></a></li>
+            </div>
+            {% endfor %}
+        </ul>
+        &nbsp
+        <form class="dd" role="search" method="GET" action="{% url 'home' %}">
+          <input class="serch form-control me-2" type="search" name="q" placeholder="Search Rooms" aria-label="Search">
+        </form>
+     </div>
+    <hr>
+    <div class="topicits">
+        <a style="text-decoration: none;"  href="{% url 'home'%}">All</a><br><br>
+    </div>
+    <div class="topicits" id="box">
+      {% for topic in topics %}
+      <div class="topicits">
+          <a style="text-decoration: none;" href="{% url 'home'%}?q={{topic.name}}"><p>{{topic.name}}<p></a>
+      </div>
+      {% endfor %}
+    </div>
+    <a class="topicits link-info" href="{% url 'topic-list' %}">More</a>
+
+</div>

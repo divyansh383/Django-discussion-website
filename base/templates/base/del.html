@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="rom">
+    <form method="POST" action="">
+        {%csrf_token%}
+        <p>are you sure you want to delete "{{obj}}" ?</p>
+        <div style=" display:flex ; justify-content: space-around;">
+            <button class="btn btn-primary"><a style="color: white;" href="{{request.META.HTTP_REFERER}}">go back</a></button>
+            <input class="btn btn-primary" type="submit" value="confirm">
+        </div>
+    </form>
+</div>
+{% endblock content %}
